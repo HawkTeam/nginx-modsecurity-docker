@@ -10,8 +10,7 @@ FROM ubuntu
 MAINTAINER tatdat171, tatdat171@gmail.com
 
 #Install necessary package
-RUN apt-get update
-RUN apt install build-essential g++ flex bison curl doxygen libyajl-dev libgeoip-dev libtool dh-autoreconf libcurl4-gnutls-dev libxml2 libpcre++-dev libxml2-dev git -y
+RUN apt-get update && apt-get install build-essential g++ flex bison curl doxygen libyajl-dev libgeoip-dev libtool dh-autoreconf libcurl4-gnutls-dev libxml2 libpcre++-dev libxml2-dev git -y
 
 ### Install library require for building nginx ###
 #Install PCRE library
@@ -39,7 +38,7 @@ RUN sudo make install
 RUN wget https://www.openssl.org/source/openssl-1.0.2l.tar.gz
 RUN tar -zxf openssl-1.0.2k.tar.gz
 RUN cd openssl-1.0.2k
-RUN ./configure darwin64-x86_64-cc --prefix=/usr
+RUN ./config --prefix=/usr
 RUN make
 RUN make install
 
